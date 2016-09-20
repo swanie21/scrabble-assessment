@@ -1,4 +1,5 @@
 const assert = require('chai').assert;
+const CalculateScore = require('../lib/components/CalculateScore');
 
 describe('test bundle', function () {
   it('should work', function () {
@@ -7,31 +8,38 @@ describe('test bundle', function () {
   });
 
 describe('scoreWord function', function () {
-    it.skip('should be a function', function () {
-      assert.isFunction(scoreWord());
-    });
+  it('should be a function', function () {
+    const score = new CalculateScore();
+    assert.isFunction(score.scoreWord);
+  });
 
-    it.skip('should take a word and return the total score of the word', function () {
+  it('should take a word and return the total score of the word', function () {
+    const score = new CalculateScore();
+    var word = score.scoreWord('heyyyyyyy');
+    assert.equal(word, 33);
+  });
 
-    });
+  it('should return 8 with the word hello', function () {
+    const score = new CalculateScore();
+    var word = score.scoreWord('hello');
+    assert.equal(word, 8);
+  });
 
-    it.skip('should return 8 with the word hello', function () {
+  it('should return 0 if it is an empty string or non-string', function () {
+    const score = new CalculateScore();
+    var word = score.scoreWord('');
+    assert.equal(word, 0);
+  });
 
-    });
+  it('should exclude whitespace bafore and after the word', function () {
+    const score = new CalculateScore();
+    var word = score.scoreWord('   hello  ');
+    assert.equal(word, 8);
+  });
 
-    it.skip('should return 0 if it is an empty string or non-string', function () {
-
-    });
-
-    it.skip('should exclude whitespace bafore and after the word', function () {
-
-    });
-
-    it.skip('should take an optional second argument for the word nultiplier', function () {
-
-    });
-
-    it.skip('should have an input field', function () {
-
-    });
+  it('should take an optional second argument for a nultiplier', function () {
+    const score = new CalculateScore();
+    var word = score.scoreWord('hello', 3);
+    assert.equal(word, 24);
+  });
 });
