@@ -31,7 +31,7 @@ describe('scoreWord function', function () {
     assert.equal(word, 0);
   });
 
-  it('should exclude whitespace bafore and after the word', function () {
+  it('should exclude whitespace before and after the word', function () {
     const score = new CalculateScore();
     var word = score.scoreWord('   hello  ');
     assert.equal(word, 8);
